@@ -104,3 +104,4 @@ venv.bak/
 .mypy_cache/
 #linjinux
 /.idea/
+/venv/
