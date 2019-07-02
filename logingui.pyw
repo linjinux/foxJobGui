@@ -26,17 +26,15 @@ class loginWindow(tk.Tk):
         self.Label_image.pack()
 
         # 创建一个Label+enter
-        global user
-        user=tk.StringVar()
+        self.Entry_user=tk.StringVar()
         self.Label_user = tk.Label(self,text='用户名:', bg='#FFFFFF').place(x=10,y=120)
-        self.user = tk.Entry(self,textvariable=user,\
+        self.user = tk.Entry(self,textvariable=self.Entry_user,\
                                    highlightbackground='#98FB98',highlightthickness=1).place(x=10,y=150)
 
         # 创建一个Label+passwd
-        global passwd
-        passwd = tk.StringVar()
+        self.Entry_passwd = tk.StringVar()
         self.Label_passwd = tk.Label(self,text='密码:', bg='#FFFFFF').place(x=10,y=180)
-        self.passwd = tk.Entry(self,textvariable=passwd,show='*',\
+        self.passwd = tk.Entry(self,textvariable=self.Entry_passwd,show='*',\
                                      highlightbackground='#98FB98',highlightthickness=1).place(x=10,y=210)
 
         # 创建登录按钮
@@ -44,22 +42,12 @@ class loginWindow(tk.Tk):
         self.Button_login = tk.Button(self,text='login',image=self.loginphoto,\
                                       command=self.loginbt,compound="center").place(x=250, y=150)
 
-
-    def load_file_info(self):
-        if not os.path.exists(self.file_path):
-            showinfo("系统消息","用户文件不存在！")
-        else:
-            try:
-                with open(file=self.file_path,mode="r") as fd:
-                    current_line = fd.readline()
-                    while current_line:
-                        temp_list = current_line.split(",")
-                        self.user_list.append(temp_list)
-                        current_line = fd.readline()
-            except:
-                tk.messagebox.showinfo("系统消息","用户文件读取出现异常！")
+#tk.messagebox.showinfo("系统消息","用户文件读取出现异常！")
 
     def loginbt(self):
+        name=self.Entry_user.get()
+        passwd=self.Entry_passwd.get()
+        print(name,passwd)
         print((passwd))
         print('button')
 
