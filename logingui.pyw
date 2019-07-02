@@ -1,8 +1,9 @@
 import tkinter as tk
+from app.mainWindow import mainWindow
 from tkinter import messagebox as message
 
 class loginWindow(tk.Tk):
-    #打开一个窗口
+    #初始化窗口
     def __init__(self):
         super(loginWindow,self).__init__() #继承类
         width = 360   #登录界面宽度
@@ -12,16 +13,12 @@ class loginWindow(tk.Tk):
         self.title("登录界面")
         self.geometry("+{}+{}".format(sw,sh))
         self.resizable(0,0) #固定窗口不能拉伸
-        #self.frame.iconbitmap("./img/stu.ico")   #ICO图片位置
+        self.setup_Ui()  #加载窗体
 
-        #加载窗体
-        self.setup_Ui()
-        #自动账号加载
-        #self.load_file_info()
-
+    #窗体模块
     def setup_Ui(self):
         #展示图片
-        self.login_image = tk.PhotoImage(file="./img/login.png")
+        self.login_image = tk.PhotoImage(file="./app/img/login.png")
         self.Label_image = tk.Label(self,image = self.login_image)
         self.Label_image.pack()
 
@@ -38,22 +35,19 @@ class loginWindow(tk.Tk):
                                      highlightbackground='#98FB98',highlightthickness=1).place(x=10,y=210)
 
         # 创建登录按钮
-        self.loginphoto = tk.PhotoImage(file="img/loginsub.gif")
+        self.loginphoto = tk.PhotoImage(file="./app/img/loginsub.gif")
         self.Button_login = tk.Button(self,text='login',image=self.loginphoto,\
                                       command=self.loginbt,compound="center").place(x=250, y=150)
-
-#tk.messagebox.showinfo("系统消息","用户文件读取出现异常！")
-
+    #登录验证
     def loginbt(self):
         name=self.Entry_user.get()
         passwd=self.Entry_passwd.get()
         if name=="linjinux" and passwd=="123":
             print(name,passwd)
-            print((passwd))
-            print('button')
+            self.destroy()
+            main=mainWindow()
         else:
             message.showerror("ERROR","Username or password error\nPlease enter again")
-
 
 if __name__ == "__main__":
     this_login = loginWindow()
