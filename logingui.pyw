@@ -1,5 +1,5 @@
 import tkinter as tk
-import os
+from tkinter import messagebox as message
 
 class loginWindow(tk.Tk):
     #打开一个窗口
@@ -47,9 +47,12 @@ class loginWindow(tk.Tk):
     def loginbt(self):
         name=self.Entry_user.get()
         passwd=self.Entry_passwd.get()
-        print(name,passwd)
-        print((passwd))
-        print('button')
+        if name=="linjinux" and passwd=="123":
+            print(name,passwd)
+            print((passwd))
+            print('button')
+        else:
+            message.showerror("ERROR","Username or password error\nPlease enter again")
 
 
 if __name__ == "__main__":
