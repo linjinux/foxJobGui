@@ -46,6 +46,7 @@ class loginWindow(tk.Tk):
             print(name,passwd)
             self.destroy()
             main=mainWindow()
+            main.mainloop()
         else:
             message.showerror("ERROR","Username or password error\nPlease enter again")
 
