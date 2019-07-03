@@ -48,7 +48,7 @@ class loginWindow(tk.Tk):
             main=mainWindow()
             main.mainloop()
         else:
-            message.showerror("ERROR","Username or password error\nPlease enter again")
+            message.showerror("ERROR","Username or password error. Please enter again")
 
 if __name__ == "__main__":
     this_login = loginWindow()
