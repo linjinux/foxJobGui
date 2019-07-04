@@ -1,9 +1,7 @@
 import tkinter as tk
 from platform import uname
 from app.module.remote import remoteWindow
-from os import system
 from tkinter import messagebox as message
-from .sharecode import root_app_directory
 class mainWindow(tk.Tk):
     def __init__(self):
         super(mainWindow,self).__init__()

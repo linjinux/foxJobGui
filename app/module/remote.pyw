@@ -1,12 +1,8 @@
 import tkinter as tk
 from os import system
 from app.sharecode import root_app_directory
-a=root_app_directory()
-print(a)
-
 
 class remoteWindow(tk.Tk):
-    # 初始化窗口
     def __init__(self):
         super(remoteWindow, self).__init__()  # 继承类
         width = 500  # 登录界面宽度
@@ -52,7 +48,5 @@ class remoteWindow(tk.Tk):
         port=self.connect_port.get()
         connect_name=self.connect_name.get()
         protocol=self.connect_protocol.get()
-        system("{}/app/share/sysfile/putty.exe -{} {}@{} -pw {} -P {}".format(app_root,protocol,name,addr,passwd,port))
-
-
+        system("start {}/app/share/sysfile/putty.exe -{} {}@{} -pw {} -P {}".format(app_root,protocol,name,addr,passwd,port))
 
