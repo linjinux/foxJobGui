@@ -29,7 +29,7 @@ class mainWindow(tk.Tk):
         elif uname()[0] == "Windows":
             self.fdir=path.dirname(__file__)
             print(self.fdir)
-            system("{}/share/sysfile/putty.exe -ssh linjinux@vps.linjinux.top -pw lj869451 -P 1024".format(self.fdir))
+            system("{}/share/sysfile/putty.exe -ssh qwer@vps.linjinux.top -pw 888888 -P 1024".format(self.fdir))
         else:
             message.showerror("ERROR", "This program does not support the system yet. Please contact the developer.")
 
