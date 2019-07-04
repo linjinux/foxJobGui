@@ -1,6 +1,6 @@
 import tkinter as tk
 from platform import uname
-from os import system,path
+from app.module.remote import remoteWindow
 from tkinter import messagebox as message
 class mainWindow(tk.Tk):
     def __init__(self):
@@ -27,13 +27,12 @@ class mainWindow(tk.Tk):
         if uname()[0] == "Linux":
             pass
         elif uname()[0] == "Windows":
-            self.fdir=path.dirname(__file__)
-            print(self.fdir)
-            system("{}/share/sysfile/putty.exe -ssh linjinux@vps.linjinux.top -pw lj869451 -P 1024".format(self.fdir))
+            self.destroy()
+            remote=remoteWindow()
+            remote.mainloop()
         else:
             message.showerror("ERROR", "This program does not support the system yet. Please contact the developer.")
 
 
 
-main=mainWindow()
-main.mainloop()
+

@@ -42,7 +42,7 @@ class loginWindow(tk.Tk):
     def loginbt(self):
         name=self.Entry_user.get()
         passwd=self.Entry_passwd.get()
-        if name=="linjinux" and passwd=="123":
+        if 0==0:
             print(name,passwd)
             self.destroy()
             main=mainWindow()
