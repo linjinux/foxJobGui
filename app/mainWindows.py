@@ -1,6 +1,6 @@
 import tkinter as tk
 from platform import uname
-from app.module.remote import remoteWindow
+from app.appmodule.remote import remoteWindow
 from tkinter import messagebox as message
 class mainWindow(tk.Tk):
     def __init__(self):
@@ -25,6 +25,7 @@ class mainWindow(tk.Tk):
 
     def remote(self):
         if uname()[0] == "Linux":
+            print("hello")
             pass
         elif uname()[0] == "Windows":
             self.destroy()
@@ -32,7 +33,6 @@ class mainWindow(tk.Tk):
             remote.mainloop()
         else:
             message.showerror("ERROR", "This program does not support the system yet. Please contact the developer.")
-
 
 
 

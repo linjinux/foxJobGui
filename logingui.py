@@ -1,5 +1,5 @@
 import tkinter as tk
-from app.mainWindow import mainWindow
+from app.mainWindows import mainWindow
 from tkinter import messagebox as message
 
 class loginWindow(tk.Tk):
@@ -43,7 +43,6 @@ class loginWindow(tk.Tk):
         name=self.Entry_user.get()
         passwd=self.Entry_passwd.get()
         if 0==0:
-            print(name,passwd)
             self.destroy()
             main=mainWindow()
             main.mainloop()
