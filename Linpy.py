@@ -1,11 +1,12 @@
+#！/usr/bin/env python
 import tkinter as tk
-from app.mainWindows import mainWindow
+from app.mainWindows import MainWindow
 from tkinter import messagebox as message
 
-class loginWindow(tk.Tk):
-    #初始化窗口
+class LoginWindow(tk.Tk):
+    """初始化窗口"""
     def __init__(self):
-        super(loginWindow,self).__init__() #继承类
+        super(LoginWindow,self).__init__() #继承类
         width = 360   #登录界面宽度
         height = 250   #登录界面高度
         sw = (self.winfo_screenwidth()-width)//2  #获取x轴坐标
@@ -44,13 +45,13 @@ class loginWindow(tk.Tk):
         passwd=self.Entry_passwd.get()
         if 0==0:
             self.destroy()
-            main=mainWindow()
+            main=MainWindow()
             main.mainloop()
         else:
             message.showerror("ERROR","Username or password error. Please enter again")
 
 if __name__ == "__main__":
-    this_login = loginWindow()
+    this_login = LoginWindow()
     this_login.mainloop()
 
 
