@@ -1,8 +1,9 @@
 #！/usr/bin/env python
 import tkinter as tk
 from platform import uname
-from app.appmodule.remote import RemoteWindow
+from app.appmodule.remote import RemoteWindow_W
 from app.appmodule.about import AboutWindow
+from app.appmodule.localterminal import LocalTerminal
 from tkinter import messagebox as message
 class MainWindow(tk.Tk):
     """main windows function"""
@@ -20,7 +21,7 @@ class MainWindow(tk.Tk):
 
     def setup_Ui(self):
         self.Button_remote_shell = tk.Button(self, text='远     端',command=self.remote,width=8).place(x=10, y=10)
-        self.Button_local_shell = tk.Button(self, text='本地终端',width=8).place(x=110, y=10)
+        self.Button_local_shell = tk.Button(self, text='本地终端',width=8,command=self.localterminal).place(x=110, y=10)
         self.Button_cloud_date = tk.Button(self, text='云盘数据',width=8).place(x=10, y=60)
         self.Button_system = tk.Button(self, text='系统资源',width=8).place(x=110, y=60)
         self.Button_job_module = tk.Button(self, text='工作组件',width=8).place(x=10, y=110)
@@ -32,12 +33,17 @@ class MainWindow(tk.Tk):
             pass
         elif uname()[0] == "Windows":
             self.destroy()
-            remote=RemoteWindow()
+            remote=RemoteWindow_W()
             remote.mainloop()
             self.main=MainWindow()
             self.main.mainloop()
         else:
             message.showerror("ERROR", "This program does not support the system yet. Please contact the developer.")
+
+    def localterminal(self):
+        self.destroy()
+        terminal=LocalTerminal()
+        
 
     def about(self):
         self.destroy()

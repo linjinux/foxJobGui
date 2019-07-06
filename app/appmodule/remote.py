@@ -3,10 +3,10 @@ import tkinter as tk
 from os import system
 from app.sharecode import root_app_directory
 
-class RemoteWindow(tk.Tk):
+class RemoteWindow_W(tk.Tk):
     """remote module function"""
     def __init__(self):
-        super(RemoteWindow, self).__init__()  # 继承类
+        super(RemoteWindow_W, self).__init__()  # 继承类
         width = 500  # 登录界面宽度
         height = 300  # 登录界面高度
         sw = (self.winfo_screenwidth() - width) //2 # 获取x轴坐标
@@ -51,3 +51,7 @@ class RemoteWindow(tk.Tk):
         connect_name=self.connect_name.get()
         protocol=self.connect_protocol.get()
         system("start {}/app/share/sysfile/putty.exe -{} {}@{} -pw {} -P {}".format(app_root,protocol,name,addr,passwd,port))
+
+
+
+        
