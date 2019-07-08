@@ -4,5 +4,6 @@ class LocalTerminal():
 	"""docstring for LocalTerminal"""
 	def __init__(self):
 		super(LocalTerminal, self).__init__()
+		os.system("xfce4-terminal")
 		os.system("cmd")
 
