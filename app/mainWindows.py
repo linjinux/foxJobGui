@@ -2,6 +2,7 @@
 import tkinter as tk
 from platform import uname
 from app.appmodule.remote import RemoteWindow_W
+from app.appmodule.remote import RemoteWindow_L
 from app.appmodule.about import AboutWindow
 from app.appmodule.localterminal import LocalTerminal
 from tkinter import messagebox as message
@@ -30,7 +31,11 @@ class MainWindow(tk.Tk):
     def remote(self):
         if uname()[0] == "Linux":
             print("hello")
-            pass
+            self.destroy()
+            remote=RemoteWindow_L()
+            remote.mainloop()
+            self.main=MainWindow()
+            self.main.mainloop()
         elif uname()[0] == "Windows":
             self.destroy()
             remote=RemoteWindow_W()

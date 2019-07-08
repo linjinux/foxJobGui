@@ -40,9 +40,9 @@ class RemoteWindow_W(tk.Tk):
         self.Entry_connect_protocol = tk.Entry(self, textvariable=self.connect_protocol, width=15).place(x=60, y=210)
 
         self.Button_save = tk.Button(self, text='保存', width=10).place(x=10, y=260)
-        self.Button_connect = tk.Button(self, text='启动链接', width=10,command=self.connect_Remote).place(x=160, y=260)
+        self.Button_connect = tk.Button(self, text='启动链接', width=10,command=self.connect_Remote_Var).place(x=160, y=260)
 
-    def connect_Remote(self):
+    def connect_Remote_Var(self):
         app_root=root_app_directory()
         passwd=self.user_passwd.get()
         name=self.user_name.get()
@@ -50,8 +50,26 @@ class RemoteWindow_W(tk.Tk):
         port=self.connect_port.get()
         connect_name=self.connect_name.get()
         protocol=self.connect_protocol.get()
+        self.start_Connect(app_root,passwd,name,addr,port,connect_name,protocol)
+
+    def start_Connect(self,app_root,passwd,name,addr,port,connect_name,protocol):
         system("start {}/app/share/sysfile/putty.exe -{} {}@{} -pw {} -P {}".format(app_root,protocol,name,addr,passwd,port))
 
+class RemoteWindow_L(RemoteWindow_W):
+    def start_Connect(self,app_root,passwd,name,addr,port,connect_name,protocol):
+        system("start {}/app/share/sysfile/putty.exe -{} {}@{} -pw {} -P {}".format(app_root,protocol,name,addr,passwd,port))
 
-
+    '''
+    def connect_Remote(self):
+        passwd=self.user_passwd.get()
+        name=self.user_name.get()
+        addr=self.connect_addr.get()
+        port=self.connect_port.get()
+        connect_name=self.connect_name.get()
+        protocol=self.connect_protocol.get()
+        print('RemoteWindow_L')
+        if protocol == "ssh":
+            system("{} ")'''
+                
+                        
         
