@@ -58,18 +58,4 @@ class RemoteWindow_W(tk.Tk):
 class RemoteWindow_L(RemoteWindow_W):
     def start_Connect(self,app_root,passwd,name,addr,port,connect_name,protocol):
         system("start {}/app/share/sysfile/putty.exe -{} {}@{} -pw {} -P {}".format(app_root,protocol,name,addr,passwd,port))
-
-    '''
-    def connect_Remote(self):
-        passwd=self.user_passwd.get()
-        name=self.user_name.get()
-        addr=self.connect_addr.get()
-        port=self.connect_port.get()
-        connect_name=self.connect_name.get()
-        protocol=self.connect_protocol.get()
-        print('RemoteWindow_L')
-        if protocol == "ssh":
-            system("{} ")'''
-                
-                        
         
