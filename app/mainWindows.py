@@ -24,7 +24,7 @@ class MainWindow(tk.Tk):
         self.Button_remote_shell = tk.Button(self, text='远     端',command=self.remote,width=8).place(x=10, y=10)
         self.Button_local_shell = tk.Button(self, text='本地终端',width=8,command=self.localterminal).place(x=110, y=10)
         self.Button_cloud_date = tk.Button(self, text='云盘数据',width=8).place(x=10, y=60)
-        self.Button_system = tk.Button(self, text='系统资源',command=sysinfo,width=8).place(x=110, y=60)
+        self.Button_system = tk.Button(self, text='系统资源',command=self.sysinfo,width=8).place(x=110, y=60)
         self.Button_job_module = tk.Button(self, text='工作组件',width=8).place(x=10, y=110)
         self.Button_about = tk.Button(self, text='关    于',command=self.about,width=8).place(x=110, y=110)
 
@@ -58,4 +58,5 @@ class MainWindow(tk.Tk):
         self.main.mainloop()
 
     def sysinfo(self):
-        pass
+        print("hello")
+		

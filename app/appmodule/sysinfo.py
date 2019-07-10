@@ -1,34 +1,4 @@
 #!/usr/bin/env python3
-import psutil
-print(str(psutil.cpu_percent()))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-'''
 import os,psutil,datetime,time
 syStem=os.name
 if syStem=="posix":
@@ -41,10 +11,10 @@ else:
 print("CPU使用信息:")
 cpuCount=psutil.cpu_count()
 print("CPU的核心数:%d"%(cpuCount/2))
-cpuPercent=psutil.cpu_percent()
+cpuPercent=psutil.cpu_percent(interval=1)
 print(cpuPercent)
 print(psutil.cpu_percent())
-print("CPU使用率:{}".format(psutil.cpu_percent()))
+print("CPU使用率:{}".format(psutil.cpu_percent(interval=1)))
 
 print("内存使用信息:")
 info=psutil.virtual_memory()
@@ -73,4 +43,3 @@ for user in users:
 boot=psutil.boot_time()
 dt=datetime.datetime.fromtimestamp(boot)
 print("系统开机的时间:{}".format(dt.strftime("%Y-%m-%d,%H:%M:%S")))
-'''
