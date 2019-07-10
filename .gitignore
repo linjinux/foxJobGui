@@ -1,9 +1,9 @@
 #linjinux
-/.idea/
-/venv/
-*/__pycache__/
-/build/
-/dist/
+idea
+venv
+__pycache__
+build
+dist
 *.spec
 *.swp
 

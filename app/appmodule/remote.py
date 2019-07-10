@@ -57,5 +57,5 @@ class RemoteWindow_W(tk.Tk):
 
 class RemoteWindow_L(RemoteWindow_W):
     def start_Connect(self,app_root,passwd,name,addr,port,connect_name,protocol):
-        system("start {}/app/share/sysfile/putty.exe -{} {}@{} -pw {} -P {}".format(app_root,protocol,name,addr,passwd,port))
+        system("{} {}@{} -p {}".format(protocol,name,addr,port))
         

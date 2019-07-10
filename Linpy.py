@@ -26,19 +26,17 @@ class LoginWindow(tk.Tk):
         # 创建一个Label+enter
         self.Entry_user=tk.StringVar()
         self.Label_user = tk.Label(self,text='用户名:', bg='#FFFFFF').place(x=10,y=120)
-        self.user = tk.Entry(self,textvariable=self.Entry_user,\
-                                   highlightbackground='#98FB98',highlightthickness=1).place(x=10,y=150)
+        self.user = tk.Entry(self,textvariable=self.Entry_user,highlightbackground='#98FB98',highlightthickness=1).place(x=10,y=150)
 
         # 创建一个Label+passwd
         self.Entry_passwd = tk.StringVar()
         self.Label_passwd = tk.Label(self,text='密码:', bg='#FFFFFF').place(x=10,y=180)
-        self.passwd = tk.Entry(self,textvariable=self.Entry_passwd,show='*',\
-                                     highlightbackground='#98FB98',highlightthickness=1).place(x=10,y=210)
+        self.passwd = tk.Entry(self,textvariable=self.Entry_passwd,show='*',highlightbackground='#98FB98',highlightthickness=1).place(x=10,y=210)
 
         # 创建登录按钮
         self.loginphoto = tk.PhotoImage(file="./app/img/loginsub.gif")
-        self.Button_login = tk.Button(self,text='login',image=self.loginphoto,\
-                                      command=self.loginbt,compound="center").place(x=250, y=150)
+        self.Button_login = tk.Button(self,text='login',image=self.loginphoto,command=self.loginbt,compound="center").place(x=250, y=150)
+        
     #登录验证
     def loginbt(self):
         name=self.Entry_user.get()
