@@ -5,6 +5,7 @@ from app.appmodule.remote import RemoteWindow_W
 from app.appmodule.remote import RemoteWindow_L
 from app.appmodule.about import AboutWindow
 from app.appmodule.localterminal import LocalTerminal
+from app.appmodule.sysinfo import SysInfo
 from tkinter import messagebox as message
 class MainWindow(tk.Tk):
     """main windows function"""
@@ -58,5 +59,8 @@ class MainWindow(tk.Tk):
         self.main.mainloop()
 
     def sysinfo(self):
-        print("hello")
+        self.destroy()
+        sysinfo=SysInfo()
+        self.main=MainWindow()
+        self.main.mainloop()
 		
