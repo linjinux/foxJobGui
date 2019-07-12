@@ -4,15 +4,24 @@ import psutil
 class SysInfo(tk.Tk):
     def __init__(self):
         super(SysInfo,self).__init__()
-        self.geometry("300x300")
+        self.geometry("200x300")
         self.refresh_data()
         self.mainloop()
     
     def refresh_data(self):
-        self.ff=tk.Label(self,text=psutil.cpu_percent(interval=1)).place(x=10,y=150)        
+        self.cpu=str(psutil.cpu_percent(interval=1))+"  "
+        self.cpu_core=psutil.cpu_count()
+        self.meminfo=psutil.virtual_memory()
+        self.memswap=psutil.swap_memory()
+        self.diskinfo=psutil.disk_partitions()
+        self.cpu_label=tk.Label(self,text="CPU核心:{}  线程:{}  使用率:{}".format(self.cpu_core//2,self.cpu_core,self.cpu)).place(x=0,y=00)
+        self.mem_label=tk.Label(self,text="Mem:{}  Free:{}".format(self.meminfo.total/1024//1024,self.meminfo.free/1024//1024)).place(x=0,y=20)
+        self.vmem_label=tk.Label(self,text="vMem:{}  vFree:{}".format(self.memswap.total/1024//1024,self.memswap.free/1024//1024)).place(x=0,y=40)
+        self.disk_label=tk.Label(self,text="disk:{}".format(self.diskinfo)).place(x=0,y=60)
         self.after(10000, self.refresh_data)
- 
 
+ 
+a=SysInfo()
 
 '''
 import os,psutil,datetime,time
