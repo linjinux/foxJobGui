@@ -22,11 +22,8 @@ class SysInfo(tk.Tk):
 
     def on_closing(self):
         if messagebox.askokcancel("Quit", "Do you want to quit?"):
-            self.after(0,self.destroy())
+            self.after(0,self.quit)
  
-a=SysInfo()
-a.protocol("WM_DELETE_WINDOW", a.on_closing)
-a.mainloop()
 '''
 import os,psutil,datetime,time
 syStem=os.name
