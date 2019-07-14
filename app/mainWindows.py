@@ -62,9 +62,7 @@ class MainWindow(tk.Tk):
     def sysinfo(self):
         self.destroy()
         sysinfo=SysInfo()
-        sysinfo.protocol("WM_DELETE_WINDOW", sysinfo.on_closing)
         sysinfo.mainloop()
-        sysinfo.destroy()
         self.main=MainWindow()
         self.main.mainloop()
 		

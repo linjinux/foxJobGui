@@ -1,4 +1,5 @@
 #！/usr/bin/env python
+import setproctitle 
 import tkinter as tk
 from app.mainWindows import MainWindow
 from tkinter import messagebox as message
@@ -7,6 +8,7 @@ class LoginWindow(tk.Tk):
     """初始化窗口"""
     def __init__(self):
         super(LoginWindow,self).__init__() #继承类
+        setproctitle.setproctitle("Linpy")
         width = 360   #登录界面宽度
         height = 250   #登录界面高度
         sw = (self.winfo_screenwidth()-width)//2  #获取x轴坐标

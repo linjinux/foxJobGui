@@ -7,6 +7,7 @@ class SysInfo(tk.Tk):
         super(SysInfo,self).__init__()
         self.geometry("200x300")
         self.refresh_data()
+        #self.protocol("WM_DELETE_WINDOW", self.on_closing)
     
     def refresh_data(self):
         self.cpu=str(psutil.cpu_percent(interval=1))+"  "
@@ -18,12 +19,15 @@ class SysInfo(tk.Tk):
         self.mem_label=tk.Label(self,text="Mem:{}  Free:{}".format(self.meminfo.total/1024//1024,self.meminfo.free/1024//1024)).place(x=0,y=20)
         self.vmem_label=tk.Label(self,text="vMem:{}  vFree:{}".format(self.memswap.total/1024//1024,self.memswap.free/1024//1024)).place(x=0,y=40)
         self.disk_label=tk.Label(self,text="disk:{}".format(self.diskinfo)).place(x=0,y=60)
-        self.after(10000,self.refresh_data)
+        self.protocol("WM_DELETE_WINDOW",self.quit())
+        win=self.after(10000,lambda:self.refresh_data)
+
 
     def on_closing(self):
         if messagebox.askokcancel("Quit", "Do you want to quit?"):
             self.after(0,self.quit)
- 
+#a=SysInfo()
+#a.mainloop()
 '''
 import os,psutil,datetime,time
 syStem=os.name
