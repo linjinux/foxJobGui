@@ -1,7 +1,6 @@
 #！/usr/bin/env python
 import tkinter as tk
 from platform import uname
-from sys import exit
 from app.appmodule.remote import RemoteWindow_W
 from app.appmodule.remote import RemoteWindow_L
 from app.appmodule.about import AboutWindow
@@ -32,7 +31,6 @@ class MainWindow(tk.Tk):
 
     def remote(self):
         if uname()[0] == "Linux":
-            print("hello")
             self.destroy()
             remote=RemoteWindow_L()
             remote.mainloop()

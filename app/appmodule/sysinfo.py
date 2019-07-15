@@ -6,10 +6,11 @@ class SysInfo(tk.Tk):
     def __init__(self):
         super(SysInfo,self).__init__()
         self.geometry("200x300")
-        self.refresh_data()
-        #self.protocol("WM_DELETE_WINDOW", self.on_closing)
+        self.refresh()
+        self.protocol("WM_DELETE_WINDOW", self.closing)
     
-    def refresh_data(self):
+    def refresh(self):
+        global while_value
         self.cpu=str(psutil.cpu_percent(interval=1))+"  "
         self.cpu_core=psutil.cpu_count()
         self.meminfo=psutil.virtual_memory()
@@ -19,15 +20,14 @@ class SysInfo(tk.Tk):
         self.mem_label=tk.Label(self,text="Mem:{}  Free:{}".format(self.meminfo.total/1024//1024,self.meminfo.free/1024//1024)).place(x=0,y=20)
         self.vmem_label=tk.Label(self,text="vMem:{}  vFree:{}".format(self.memswap.total/1024//1024,self.memswap.free/1024//1024)).place(x=0,y=40)
         self.disk_label=tk.Label(self,text="disk:{}".format(self.diskinfo)).place(x=0,y=60)
-        self.protocol("WM_DELETE_WINDOW",self.quit())
-        win=self.after(10000,lambda:self.refresh_data)
+        while_value=self.after(10000,self.refresh)
 
 
-    def on_closing(self):
+    def closing(self):
         if messagebox.askokcancel("Quit", "Do you want to quit?"):
-            self.after(0,self.quit)
-#a=SysInfo()
-#a.mainloop()
+            self.after_cancel(while_value)
+            self.destroy() 
+
 '''
 import os,psutil,datetime,time
 syStem=os.name
@@ -58,7 +58,7 @@ for partition in diskinfo:
     if syStem=="posix":
         diskpart=psutil.disk_usage(partition.mountpoint)
         print(diskinfo)
-        print("分区名称:%s\t挂载点:%s\t容量/空闲(GB):%d/%d\t分区类型:%s\t"\
+ "11408848refresh_data       print("分区名称:%s\t挂载点:%s\t容量/空闲(GB):%d/%d\t分区类型:%s\t"\
         %(partition.device,partition.mountpoint,diskpart.total/1024/1024/1024,\
 	diskpart.free/1024/1024/1024,partition.fstype))
     elif syStem=="nt":

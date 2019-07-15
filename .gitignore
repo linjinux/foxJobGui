@@ -6,4 +6,5 @@ build
 dist
 *.spec
 *.swp
-
+*.un~
+*.py~
