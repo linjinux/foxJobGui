@@ -2,3 +2,6 @@
 this is test project
 
 import psutil
+
+##打包方式##
+pyinstaller -F -w filename.py

@@ -1,8 +1,6 @@
 #！/usr/bin/env python
 import tkinter as tk
-from os import system
-from app.sharecode import root_app_directory
-
+import  os
 class RemoteWindow_W(tk.Tk):
     """remote module function"""
     def __init__(self):
@@ -43,19 +41,19 @@ class RemoteWindow_W(tk.Tk):
         self.Button_connect = tk.Button(self, text='启动链接', width=10,command=self.connect_Remote_Var).place(x=160, y=260)
 
     def connect_Remote_Var(self):
-        app_root=root_app_directory()
         passwd=self.user_passwd.get()
         name=self.user_name.get()
         addr=self.connect_addr.get()
         port=self.connect_port.get()
         connect_name=self.connect_name.get()
         protocol=self.connect_protocol.get()
-        self.start_Connect(app_root,passwd,name,addr,port,connect_name,protocol)
+        self.start_Connect(protocol,name,addr,port,passwd,connect_name)
 
-    def start_Connect(self,app_root,passwd,name,addr,port,connect_name,protocol):
-        system("start {}/app/share/sysfile/putty.exe -{} {}@{} -pw {} -P {}".format(app_root,protocol,name,addr,passwd,port))
+    def start_Connect(self,protocol,name,addr,port,passwd,connect_name):
+        os_path=os.path.abspath('.')
+        os.system("start {}\\app\\share\\sysfile\\putty.exe -{} {}@{} -pw {} -P {}".format(os_path,protocol,name,addr,passwd,port))
 
 class RemoteWindow_L(RemoteWindow_W):
-    def start_Connect(self,app_root,passwd,name,addr,port,connect_name,protocol):
-        system("{} {}@{} -p {}".format(protocol,name,addr,port))
-        
+    def start_Connect(self,passwd,name,addr,port,protocol,connect_name):
+        os.system("{} {}@{} -p {}".format(protocol,name,addr,port))
+
